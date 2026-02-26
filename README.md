@@ -63,7 +63,7 @@ Dataset preprocessing included:
 ---
 
 ## 📂 Project Structure
-
+---
 YieldIQ-Crop-Recommendation-System/
 │
 ├── Webplatform/
@@ -85,20 +85,38 @@ YieldIQ-Crop-Recommendation-System/
 └── .gitignore
 
 ---
+🔮 Future Enhancements
+
+Add JavaScript for real-time predictions without page reload
+
+Deploy the application on cloud platforms (Render / AWS)
+
+Integrate fertilizer recommendation module
+
+Support regional language interfaces for farmers
+
+---
+
+👤 Author
+
+Saloni Agrawal
+GitHub: https://github.com/saloni-agrawal23
+
+---
 
 ## 🚀 How to Run the Project Locally
 
-1️⃣ Clone the repository
+1️.Clone the repository
 ```bash
 git clone https://github.com/saloni-agrawal23/YieldIQ-Crop-Recommendation-System.git
 cd YieldIQ-Crop-Recommendation-System
 
-2️⃣ Install dependencies
+2️.Install dependencies
 pip install -r requirements.txt
 
-3️⃣ Run the Flask application
+3️.Run the Flask application
 cd Webplatform
 python app.py
 
-4️⃣ Open in browser
+4️.Open in browser
 http://127.0.0.1:5000/
