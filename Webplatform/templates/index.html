@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YieldIQ - Crop Recommendation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --soil: #2c1a0e;
+            --bark: #3d2b1a;
+            --leaf: #3a7d44;
+            --sprout: #6abf69;
+            --sun: #f4b942;
+            --cream: #fdf6ec;
+            --mist: #f0ede8;
+            --text: #1e120a;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--cream);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background-image:
+                radial-gradient(ellipse at 10% 20%, rgba(106,191,105,0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 80%, rgba(244,185,66,0.1) 0%, transparent 50%);
+        }
+
+        .page-wrap {
+            width: 100%;
+            max-width: 560px;
+        }
+
+        /* Header */
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .brand-icon {
+            width: 42px; height: 42px;
+            background: var(--leaf);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--soil);
+            letter-spacing: -0.5px;
+        }
+
+        .brand-name span { color: var(--leaf); }
+
+        .tagline {
+            font-size: 0.8rem;
+            color: #8a7060;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            animation: fadeUp 0.6s 0.1s ease both;
+        }
+
+        /* Card */
+        .card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow:
+                0 1px 2px rgba(44,26,14,0.04),
+                0 8px 32px rgba(44,26,14,0.08),
+                0 32px 64px rgba(44,26,14,0.06);
+            animation: fadeUp 0.6s 0.15s ease both;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            color: var(--soil);
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .card-subtitle {
+            color: #9a8070;
+            font-size: 0.88rem;
+            margin-bottom: 32px;
+        }
+
+        /* Section dividers */
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--leaf);
+            margin: 24px 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e8e0d8;
+        }
+
+        /* Field grid */
+        .field-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .field-grid.single { grid-template-columns: 1fr; }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        label {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: #6b5040;
+            letter-spacing: 0.02em;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .unit {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.75rem;
+            color: #b0a090;
+            pointer-events: none;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 11px 36px 11px 14px;
+            border: 1.5px solid #e4ddd5;
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text);
+            background: var(--mist);
+            transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+            -moz-appearance: textfield;
+            outline: none;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+        input[type="number"]:focus {
+            border-color: var(--leaf);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(58,125,68,0.12);
+        }
+
+        /* Button */
+        .btn {
+            width: 100%;
+            margin-top: 28px;
+            padding: 15px;
+            background: var(--soil);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 4px 16px rgba(44,26,14,0.25);
+        }
+
+        .btn:hover {
+            background: var(--leaf);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(58,125,68,0.35);
+        }
+
+        .btn:active { transform: translateY(0); }
+
+        .btn-icon { font-size: 1.1rem; }
+
+        /* Result */
+        .result {
+            margin-top: 24px;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, var(--leaf), #2d6b35);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            animation: fadeUp 0.4s ease both;
+        }
+
+        .result-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .result-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 3px;
+        }
+
+        .result-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #fff;
+            text-transform: capitalize;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <div class="brand">
+        <div class="brand-icon">🌿</div>
+        <div class="brand-name">Yield<span>IQ</span></div>
+    </div>
+    <p class="tagline">Turning Data into Decisions</p>
+
+    <div class="card">
+        <h1 class="card-title">What should you grow?</h1>
+        <p class="card-subtitle">Enter your soil and climate data to get a tailored crop recommendation.</p>
+
+        <form method="POST" action="/predict">
+            <div class="section-label">Soil Nutrients</div>
+            <div class="field-grid">
+                <div class="field">
+                    <label for="N">Nitrogen</label>
+                    <div class="input-wrap">
+                        <input type="number" name="N" id="N" placeholder="0" required>
+                        <span class="unit">N</span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="P">Phosphorous</label>
+                    <div class="input-wrap">
+                        <input type="number" name="P" id="P" placeholder="0" required>
+                        <span class="unit">P</span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="K">Potassium</label>
+                    <div class="input-wrap">
+                        <input type="number" name="K" id="K" placeholder="0" required>
+                        <span class="unit">K</span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="ph">Soil pH</label>
+                    <div class="input-wrap">
+                        <input type="number" name="ph" id="ph" placeholder="6.5" step="0.1" required>
+                        <span class="unit">pH</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-label">Climate Conditions</div>
+            <div class="field-grid">
+                <div class="field">
+                    <label for="temperature">Temperature</label>
+                    <div class="input-wrap">
+                        <input type="number" name="temperature" id="temperature" placeholder="25" required>
+                        <span class="unit">°C</span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="humidity">Humidity</label>
+                    <div class="input-wrap">
+                        <input type="number" name="humidity" id="humidity" placeholder="80" required>
+                        <span class="unit">%</span>
+                    </div>
+                </div>
+                <div class="field single" style="grid-column: 1 / -1;">
+                    <label for="rainfall">Rainfall</label>
+                    <div class="input-wrap">
+                        <input type="number" name="rainfall" id="rainfall" placeholder="200" required>
+                        <span class="unit">mm</span>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn">
+                <span class="btn-icon">🌱</span>
+                Predict Best Crop
+            </button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <div class="result-icon">🌾</div>
+            <div>
+                <div class="result-label">Recommended Crop</div>
+                <div class="result-value">{{ prediction }}</div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>
