@@ -70,50 +70,37 @@ The Decision Tree model was selected due to its high accuracy and interpretabili
 - Lightweight and responsive frontend  
 
 ---
-
 ## 📂 Project Structure
+
+```
 YieldIQ-Crop-Recommendation-System/
 │
-├── Webplatform_agric/
-│ ├── app.py
-│ ├── decision_tree_model.pkl
-│ └── templates/
-│ └── index.html
+├── Webplatform/
+│   ├── app.py
+│   ├── decision_tree_model.pkl
+│   └── templates/
+│       └── index.html
 │
 ├── codes_analysis/
-│ └── agriculture_analysis_final.py
+│   └── agriculture_analysis_final.py
 │
 ├── proto codes/
-│ ├── Agriculture_Analysis_Final_Proto.ipynb
-│ └── Decision_Tree_Model_Training.ipynb
+│   ├── Agriculture_Analysis_Final_Proto.ipynb
+│   └── Decision_Tree_Model_Training.ipynb
 │
 ├── screenshots/
-│ ├── form.png
-│ └── result.png
+│   ├── form.png
+│   └── result.png
 │
 ├── Crop_recommendation.csv
+├── workflow.svg
 ├── requirements.txt
 ├── README.md
 ├── LICENSE
 └── .gitignore
+```
 
-
----
-
-## 🚀 How to Run the Project Locally
-
-### 1️⃣ Clone the repository
-```bash
-git clone https://github.com/saloni-agrawal23/YieldIQ-Crop-Recommendation-System.git
-cd YieldIQ-Crop-Recommendation-System
-2️⃣ Install dependencies
-pip install -r requirements.txt
-3️⃣ Run the Flask application
-cd Webplatform_agric
-python app.py
-4️⃣ Open in browser
-http://127.0.0.1:5000/
-📊 Results
+## 📊 Results
 
 The Decision Tree model achieved high accuracy across multiple crop classes
 
@@ -121,7 +108,9 @@ The system provides reliable crop recommendations based on real-world parameters
 
 The complete machine learning pipeline was successfully deployed using Flask
 
-🔮 Future Enhancements
+---
+
+## 🔮 Future Enhancements
 
 Deploy the application on cloud platforms (Render / AWS)
 
@@ -129,11 +118,15 @@ Integrate fertilizer recommendation functionality
 
 Support regional language interfaces for farmers
 
-👤 Author
+---
+
+## 👤 Author
 
 Saloni Agrawal
 GitHub: https://github.com/saloni-agrawal23
 
-📜 License
+---
+
+## 📜 License
 
 This project is licensed under the MIT License.
