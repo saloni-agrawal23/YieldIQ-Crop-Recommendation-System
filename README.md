@@ -122,7 +122,8 @@ Support regional language interfaces for farmers
 
 ## 👤 Author
 
-Saloni Agrawal
+**Saloni Agrawal**
+
 GitHub: https://github.com/saloni-agrawal23
 
 ---
