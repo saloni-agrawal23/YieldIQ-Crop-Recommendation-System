@@ -60,3 +60,45 @@ Dataset preprocessing included:
 - Backend ML model integrated with Flask
 - Simple frontend using HTML + CSS 
 
+---
+
+## 📂 Project Structure
+
+YieldIQ-Crop-Recommendation-System/
+│
+├── Webplatform/
+│ ├── app.py
+│ ├── decision_tree_model.pkl
+│ └── templates/
+│ └── index.html
+│
+├── codes_analysis/
+│ └── agriculture_analysis_final.py
+│
+├── proto codes/
+│ ├── Agriculture_Analysis_Final_Proto.ipynb
+│ └── Decision_Tree_Model_Training.ipynb
+│
+├── Crop_recommendation.csv
+├── requirements.txt
+├── README.md
+└── .gitignore
+
+---
+
+## 🚀 How to Run the Project Locally
+
+1️⃣ Clone the repository
+```bash
+git clone https://github.com/saloni-agrawal23/YieldIQ-Crop-Recommendation-System.git
+cd YieldIQ-Crop-Recommendation-System
+
+2️⃣ Install dependencies
+pip install -r requirements.txt
+
+3️⃣ Run the Flask application
+cd Webplatform
+python app.py
+
+4️⃣ Open in browser
+http://127.0.0.1:5000/
